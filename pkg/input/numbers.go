@@ -6,8 +6,8 @@ import (
 	"strconv"
 )
 
-// ReadNumberInput takes a reader, usually stdIn, and returns a list of all line separated numbers.
-func ReadNumberInput(reader io.Reader) (result []int64, err error) {
+// ReadNumbers takes a reader, usually os.StdIn, and returns a list of all line-separated numbers.
+func ReadNumbers(reader io.Reader) (result []int64, err error) {
 	stdin := bufio.NewScanner(reader)
 	for stdin.Scan() {
 		i, err := strconv.ParseInt(stdin.Text(), 10, 64)

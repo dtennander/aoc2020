@@ -9,9 +9,9 @@ import (
 var part = flag.Int("part",1, "The part of the assignment to run.")
 
 func main() {
-	numbers, err := input.ReadNumberInput(os.Stdin)
-	flag.Parse()
+	numbers, err := input.ReadNumbers(os.Stdin)
 	if err != nil { panic(err) }
+	flag.Parse()
 	switch *part {
 	case 1:
 		part1(numbers)
