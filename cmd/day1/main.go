@@ -3,15 +3,17 @@ package main
 import (
 	"aod2020/pkg/input"
 	"flag"
-	"os"
 )
 
 var part = flag.Int("part",1, "The part of the assignment to run.")
+var inputFile = flag.String("input", "stdin", "file path of the input file.")
 
 func main() {
-	numbers, err := input.ReadNumbers(os.Stdin)
-	if err != nil { panic(err) }
 	flag.Parse()
+	in, err := input.GetReader(*inputFile)
+	if err != nil { println("Failed to open input."); return }
+	numbers, err := input.ReadNumbers(in)
+	if err != nil { println("Failed to parse input."); return }
 	switch *part {
 	case 1:
 		part1(numbers)
