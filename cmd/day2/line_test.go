@@ -62,8 +62,8 @@ func TestLine_PositionRuleValid(t *testing.T) {
 				max:      tt.fields.max,
 				password: tt.fields.password,
 			}
-			if got := l.PositionRuleValid(); got != tt.want {
-				t.Errorf("PositionRuleValid() = %v, want %v", got, tt.want)
+			if got := l.FollowsPositionRule(); got != tt.want {
+				t.Errorf("FollowsPositionRule() = %v, want %v", got, tt.want)
 			}
 		})
 	}

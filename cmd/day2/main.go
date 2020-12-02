@@ -20,9 +20,9 @@ func main() {
 	}
 	switch *part {
 	case 1:
-		scanAndCountValidLines(in, Line.CountRuleValid)
+		scanAndCountValidLines(in, Line.FollowsCountRule)
 	case 2:
-		scanAndCountValidLines(in, Line.PositionRuleValid)
+		scanAndCountValidLines(in, Line.FollowsPositionRule)
 	default:
 		println("Only parts 1 or 2 are available.")
 	}

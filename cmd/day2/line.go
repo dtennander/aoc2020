@@ -34,12 +34,12 @@ func NewLine(line string) (Line, error) {
 	}, nil
 }
 
-func (l Line) CountRuleValid() bool {
+func (l Line) FollowsCountRule() bool {
 	c := int64(strings.Count(l.password, string(l.letter)))
 	return l.min <= c && c <= l.max
 }
 
-func (l Line) PositionRuleValid() bool {
+func (l Line) FollowsPositionRule() bool {
 	arr := []rune(l.password)
 	fst := arr[l.min-1]
 	snd := arr[l.max-1]
