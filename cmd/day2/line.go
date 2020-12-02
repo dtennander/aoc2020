@@ -7,9 +7,9 @@ import (
 )
 
 type Line struct {
-	letter rune
-	min int64
-	max int64
+	letter   rune
+	min      int64
+	max      int64
 	password string
 }
 
@@ -27,9 +27,9 @@ func NewLine(line string) (Line, error) {
 	}
 	letter := []rune(match[3])[0]
 	return Line{
-		min:    min,
-		max: max,
-		letter: letter,
+		min:      min,
+		max:      max,
+		letter:   letter,
 		password: match[4],
 	}, nil
 }
@@ -41,7 +41,7 @@ func (l Line) CountRuleValid() bool {
 
 func (l Line) PositionRuleValid() bool {
 	arr := []rune(l.password)
-	fst := arr[l.min - 1]
-	snd := arr[l.max - 1]
+	fst := arr[l.min-1]
+	snd := arr[l.max-1]
 	return (fst == l.letter) != (snd == l.letter)
 }

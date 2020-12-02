@@ -1,8 +1,8 @@
 package main
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestNewLine(t *testing.T) {
@@ -11,7 +11,9 @@ func TestNewLine(t *testing.T) {
 	// When
 	line, err := NewLine(text)
 	// Then
-	if err != nil { t.Fail()}
+	if err != nil {
+		t.Fail()
+	}
 	assert.Equal(t, Line{
 		letter:   'c',
 		min:      11,
@@ -33,23 +35,23 @@ func TestLine_PositionRuleValid(t *testing.T) {
 		want   bool
 	}{
 		{
-			name:   "",
+			name: "",
 			fields: fields{
 				letter:   'c',
 				min:      11,
 				max:      14,
 				password: "hccccccccccscp",
 			},
-			want:   true,
-		},{
-			name:   "",
+			want: true,
+		}, {
+			name: "",
 			fields: fields{
 				letter:   'h',
 				min:      3,
 				max:      13,
 				password: "zzhnhnjhhkplhhwph",
 			},
-			want:   false,
+			want: false,
 		},
 	}
 	for _, tt := range tests {
