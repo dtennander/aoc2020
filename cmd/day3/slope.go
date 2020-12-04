@@ -6,6 +6,7 @@ import (
 )
 
 type Patch int
+
 const (
 	Open Patch = iota
 	Tree
@@ -16,7 +17,7 @@ type Slope [][]Patch
 func (s Slope) Get(i, j int) Patch {
 	n := len(s)
 	m := len(s[0])
-	return s[i % n][j % m]
+	return s[i%n][j%m]
 }
 
 func (s Slope) Length() int {
@@ -41,4 +42,3 @@ func ReadSlope(r io.Reader) Slope {
 	}
 	return patch
 }
-
