@@ -6,7 +6,7 @@ import (
 )
 
 func IsValidPassport(pairs map[string]string, validateValue bool) bool {
-	for _, ef := range validFields {
+	for _, ef := range requiredFields {
 		if v, ok := pairs[ef.key]; !ok || (validateValue && !ef.validation(v)) {
 			return false
 		}
@@ -21,7 +21,7 @@ type fieldRule struct {
 	validation func(value string) bool
 }
 
-var validFields = []fieldRule{
+var requiredFields = []fieldRule{
 	{"byr", func(v string) bool {
 		year, err := strconv.ParseInt(v, 10, 64)
 		return err == nil && 1920 <= year && year <= 2002
