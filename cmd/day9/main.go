@@ -7,15 +7,17 @@ import (
 )
 
 func main() {
-	_, in := config.ParseDefaultFlags()
+	part, in := config.ParseDefaultFlags()
 	numbers, err := input.ReadNumbers(in)
 	if err != nil {
 		panic(err.Error())
 	}
 	invNumber := findInvalidNumber(numbers)
 	println("Found number not matching:", invNumber)
-	summers := findContiguousSetThatSums(numbers, invNumber)
-	println("Sum of min and max are:", min(summers) + max(summers))
+	if part == 2 {
+		summers := findContiguousSetThatSums(numbers, invNumber)
+		println("Sum of min and max are:", min(summers) + max(summers))
+	}
 }
 
 func findInvalidNumber(numbers []int64) int64 {
