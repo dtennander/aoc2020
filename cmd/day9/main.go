@@ -3,7 +3,6 @@ package main
 import (
 	"aod2020/pkg/config"
 	"aod2020/pkg/input"
-	"math"
 )
 
 func main() {
@@ -29,6 +28,17 @@ func findInvalidNumber(numbers []int64) int64 {
 	return 0
 }
 
+func sumExist(values []int64, sum int64) bool {
+	for _, i := range values {
+		for _, j := range values {
+			if i+j == sum {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func findContiguousSetThatSums(numbers []int64, target int64) []int64 {
 	start := 0
 	stop := 0
@@ -44,42 +54,4 @@ func findContiguousSetThatSums(numbers []int64, target int64) []int64 {
 		}
 	}
 	return []int64{}
-}
-
-func sum(vals []int64) (sum int64) {
-	for _, v := range vals {
-		sum += v
-	}
-	return sum
-}
-
-func min(vals []int64) (r int64) {
-	r = math.MaxInt64
-	for _, v := range vals {
-		if v < r {
-			r = v
-		}
-	}
-	return r
-}
-
-func max(vals []int64) (r int64) {
-	for _, v := range vals {
-		if v > r {
-			r = v
-		}
-	}
-	return r
-}
-
-
-func sumExist(values []int64, sum int64) bool {
-	for _, i := range values {
-		for _, j := range values {
-			if i+j == sum {
-				return true
-			}
-		}
-	}
-	return false
 }
