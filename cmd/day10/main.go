@@ -65,16 +65,16 @@ func recursiveSearch(arr []bool) int {
 	if ok {
 		return result
 	}
-	if arrayLength <= 4 {
+	if arrayLength == 1 {
 		return 1
 	}
-	if arrayLength > 2 && arr[1] {
+	if arrayLength > 1 && arr[1] {
 		result += recursiveSearch(arr[1:])
 	}
-	if arrayLength > 3 && arr[2] {
+	if arrayLength > 2 && arr[2] {
 		result += recursiveSearch(arr[2:])
 	}
-	if arrayLength > 4 && arr[3] {
+	if arrayLength > 3 && arr[3] {
 		result += recursiveSearch(arr[3:])
 	}
 	savedResults[arrayLength] = result
