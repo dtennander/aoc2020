@@ -15,7 +15,7 @@ func main() {
 		println("ones:", ones, "twos", twos, "threes:", threes)
 		println("ones times threes:", ones * threes)
 	} else {
-		interations := recursiveSearch(voltages, 0)
+		interations := recursiveSearch(voltages)
 		println("Permutations:", interations)
 	}
 }
@@ -59,23 +59,24 @@ func findSpaces(array []bool) (ones int, twos int, threes int) {
 }
 
 var savedResults = make(map[int]int)
-func recursiveSearch(arr []bool, i int) int {
-	result, ok := savedResults[i]
+func recursiveSearch(arr []bool) int {
+	arrayLength := len(arr)
+	result, ok := savedResults[arrayLength]
 	if ok {
 		return result
 	}
-	if len(arr) <= 4 {
+	if arrayLength <= 4 {
 		return 1
 	}
-	if len(arr) > 2 && arr[1] {
-		result += recursiveSearch(arr[1:], i + 1)
+	if arrayLength > 2 && arr[1] {
+		result += recursiveSearch(arr[1:])
 	}
-	if len(arr) > 3 && arr[2] {
-		result += recursiveSearch(arr[2:], i + 2)
+	if arrayLength > 3 && arr[2] {
+		result += recursiveSearch(arr[2:])
 	}
-	if len(arr) > 4 && arr[3] {
-		result += recursiveSearch(arr[3:], i + 3)
+	if arrayLength > 4 && arr[3] {
+		result += recursiveSearch(arr[3:])
 	}
-	savedResults[i] = result
+	savedResults[arrayLength] = result
 	return result
 }
